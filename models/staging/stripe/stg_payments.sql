@@ -5,7 +5,7 @@ with payments as (
         status,
         amount,
         created
-    from dbt-tutorial.stripe.payment
+    from {{ source('stripe', 'payment') }}
 )
 
 select * from payments
