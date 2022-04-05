@@ -4,15 +4,18 @@ models:
 - name: stg_payments
   columns:
   - name: order_id
+    description: Foreign key to stg_orders.order_id.
     tests:
     - not_null
   - name: status
+    description: "{{ doc('payment_status') }}"
     tests:
     - accepted_values:
         values:
         - success
         - fail
   - name: payment_method
+    description: "{{ doc('payment_method') }}"
     tests:
     - accepted_values:
         values:
@@ -20,3 +23,7 @@ models:
         - bank_transfer
         - coupon
         - gift_card
+  - name: amount
+    description: payment amount in dollars.
+  - name: created
+    description: date when the payment was received.
